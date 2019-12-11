@@ -4,7 +4,7 @@ import {
   faAddressBook,
   faHome,
   faTruckMonster,
-  faDollarSign
+  faPlusCircle
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -18,6 +18,12 @@ class NavBar extends Component {
 https://www.iconfinder.com/icons/1243689/call_phone_icon
 Creative Commons (Attribution 3.0 Unported);
 https://www.iconfinder.com/Makoto_msk */}
+        <Link className="nav-link" to="/ethiorental/">
+          <span className="mr-2">
+            <FontAwesomeIcon color="var(--mainYellow)" icon={faPlusCircle} />
+          </span>{" "}
+          Add Property
+        </Link>
         <Link className="nav-link" to="/ethiorental/">
           <span className="mr-2">
             <FontAwesomeIcon color="var(--mainYellow)" icon={faHome} />

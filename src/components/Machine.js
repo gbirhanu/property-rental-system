@@ -4,17 +4,9 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import { ResourceConsumer } from "../Resource";
-import PropTypes from "prop-types";
-import Title from "./Title";
 export default class House extends Component {
   render() {
-    const {
-      houseId,
-      machineType,
-      housePhoto,
-      builtYear,
-      housePrice
-    } = this.props.house;
+    const { housePhoto, builtYear, housePrice } = this.props.house;
     return (
       <ProductWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
         <div className="card">
@@ -37,17 +29,11 @@ export default class House extends Component {
             )}
           </ResourceConsumer>
           <div className="card-footer d-flex justify-content-between">
-            <p className="align-self-center mb-0">
-              Manufactured in: {builtYear}
-            </p>
+            <p className="align-self-center mb-0">Made in: {builtYear}</p>
             <h5 className="text-blue font-italic mb-0">
               <span className="mr-1">ETB</span>
               {housePrice}
             </h5>
-          </div>
-          <div className="card-footer d-flex justify-content-between">
-            <p className="align-self-center mb-0">Machine Type</p>
-            <h5 className="text-blue font-italic mb-0">{machineType}</h5>
           </div>
         </div>
       </ProductWrapper>

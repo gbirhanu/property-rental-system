@@ -2,26 +2,18 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
+import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { ResourceConsumer } from "../Resource";
-import PropTypes from "prop-types";
-import Title from "./Title";
 export default class House extends Component {
   render() {
-    const {
-      houseId,
-      serviceType,
-      housePhoto,
-      houseType,
-      housePrice
-    } = this.props.house;
+    const { houseId, serviceType, housePhoto, housePrice } = this.props.house;
     return (
       <ProductWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
         <div className="card">
           <ResourceConsumer>
             {value => (
               <div className="img-container p-5">
-                <Link to="/details">
+                <a href={housePhoto} target="_blank" rel="noopener noreferrer">
                   <img
                     src={housePhoto}
                     alt="House"
@@ -29,25 +21,26 @@ export default class House extends Component {
                     width="100"
                     height="200"
                   />
+                </a>
+                <Link to="/ethiorental/detail">
+                  <button
+                    className="cart-btn"
+                    onClick={() => value.handleDetail(houseId)}
+                  >
+                    <FontAwesomeIcon icon={faInfoCircle} />
+                  </button>
                 </Link>
-                <button className="cart-btn">
-                  <FontAwesomeIcon icon={faCartPlus} />
-                </button>
               </div>
             )}
           </ResourceConsumer>
           <div className="card-footer d-flex justify-content-between">
-            <p className="align-self-center mb-0">
-              House is For: {serviceType}
+            <p className="align-self-center mb-0 text-capitalize">
+              House For: {serviceType}
             </p>
             <h5 className="text-blue font-italic mb-0">
               <span className="mr-1">ETB</span>
               {housePrice}
             </h5>
-          </div>
-          <div className="card-footer d-flex justify-content-between">
-            <p className="align-self-center mb-0">House Type</p>
-            <h5 className="text-blue font-italic mb-0">{houseType}</h5>
           </div>
         </div>
       </ProductWrapper>
