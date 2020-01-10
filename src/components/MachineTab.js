@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-export default class Tab extends Component {
+export default class MachineTab extends Component {
   state = {
     classNameNavOne: "nav-link active",
     classNameNavTwo: "nav-link ",
@@ -41,7 +41,7 @@ export default class Tab extends Component {
         <ul className="nav nav-tabs">
           <li className="nav-item">
             <Link
-              to="/ethiorental"
+              to="/ethiorental/machinery"
               style={{
                 backgroundColor: "transparent",
                 borderBottomColor: this.state.borderbtmcolr2,
@@ -60,13 +60,13 @@ export default class Tab extends Component {
                 }}
                 onClick={() => this.handleChange()}
               >
-                House List
+                Machine List
               </button>
             </Link>
           </li>
           <li className="nav-item">
             <Link
-              to="/ethiorental/map"
+              to="/ethiorental/machinemap"
               style={{
                 backgroundColor: "transparent",
                 borderBottomColor: this.state.borderbtmcolr2,
@@ -83,10 +83,9 @@ export default class Tab extends Component {
                   outline: "none",
                   color: this.state.color2
                 }}
-                component={Link}
                 onClick={() => this.handleChangeTwo()}
               >
-                View on Map
+                Machine on Map
               </button>
             </Link>
           </li>

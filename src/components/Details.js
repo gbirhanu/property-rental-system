@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { ResourceConsumer } from "../Resource";
 import { Link } from "react-router-dom";
 import { ButtonContainer } from "./Button";
+import "./photomore.css";
+import Title from "./Title";
 export default class Details extends Component {
   render() {
     return (
@@ -31,24 +33,28 @@ export default class Details extends Component {
             return <Link to="/ethiorental" />;
           }
           return (
-            <div className="container py-5">
-              <div className="row">
-                <div className="col-10 mx-auto text-center text-slanted text-blue my-5">
-                  <h1>{houseType}</h1>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-10 mx-auto col-md-6 my-3 ">
-                  <div className="col-10 mx-auto col-md-6 my-3 ">
+            <div className="include-title">
+              <Title name="Detail" title="Information" />
+
+              <div className="main-holder-detail">
+                <div className="photo-title-container">
+                  <div className="house-type-container">
+                    <div className="col-10 mx-auto text-center text-slanted text-blue">
+                      <h1>{houseType}</h1>
+                    </div>
+                  </div>
+                  <div className="my-photo-house">
                     <img
                       src={housePhoto}
+                      onClick={() => value.openPhotoModal(houseId)}
                       className="img-fluid"
-                      alt="product"
+                      alt="Click her to see more"
                       width="350"
                       height="100"
                     />
                   </div>
-                  <div className="col-10 mx-auto col-md-6 my-3 text-capitalize"></div>
+                </div>
+                <div className="info-holder">
                   <p>
                     <span className="text-blue">Proprty Type:</span> {houseType}
                   </p>

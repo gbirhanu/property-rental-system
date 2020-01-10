@@ -1,0 +1,61 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+.login-main-section body {
+  overflow-y: hidden;
+}
+.login-main-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-self: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  color: white;
+}
+.inp-group-section {
+  display: flex;
+  flex-direction: column;
+  background-color: #202027;
+  outline: none;
+  margin: 3rem;
+  padding: 2rem 2rem;
+  border: 1px solid black;
+  border-radius: 0.5px;
+}
+.inp-group-section input {
+  background-color: black;
+  color: white;
+  outline: none;
+  border: #444646;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+}
+.inp-group-section input:hover,
+:focus {
+  border: #797e7e;
+}
+.inp-group-section button {
+  background-color: var(--lightBlue);
+  color: white;
+  outline: none;
+  border: #202727;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+  padding: 0.5rem 0.5rem;
+}
+.form-section-sign {
+  background-color: #202027;
+  border: 1px solid #202727;
+  border-radius: 0.5rem;
+}
+.sign-title-keo {
+  font-size: 2.5rem;
+  color: var(--lightBlue);
+  font-weight: bold;
+}

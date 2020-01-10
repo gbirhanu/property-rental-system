@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import House from "./House";
 import Title from "./Title";
+import Tab from "./Tab";
 import { ResourceConsumer } from "../Resource";
 export default class HouseList extends Component {
   render() {
@@ -8,6 +9,7 @@ export default class HouseList extends Component {
       <React.Fragment>
         <div className="py-5">
           <div className="container">
+            <Tab></Tab>
             <Title name="House" title="List" />
             <div className="row">
               <ResourceConsumer>

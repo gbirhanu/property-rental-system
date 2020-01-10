@@ -1,15 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ResourceProvider } from "./Resource";
+import Welcome from "./components/Welcome";
 
 ReactDOM.render(
   <ResourceProvider>
     <Router>
-      <App />
+      <Welcome />
     </Router>
   </ResourceProvider>,
   document.getElementById("root")

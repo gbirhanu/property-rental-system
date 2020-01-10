@@ -1,18 +1,36 @@
 import React, { Component } from "react";
 import "./map.css";
+import Tab from "./Tab";
+import Title from "./Title";
+import MachineTab from "./MachineTab";
 class MapDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
       items: props.content,
-      isLoaded: false
+      isLoaded: false,
+      latitude: 0,
+      longitude: 0
     };
-    console.log("map Loading ...");
-    console.log(this.state);
   }
   componentDidMount() {
     this.renderMap();
+    this.getGeoLocaion();
   }
+  getGeoLocaion = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.showPosition);
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
+  };
+
+  showPosition = position => {
+    this.setState({
+      latitude: position.coords.latitude,
+      longitude: position.coords.longitude
+    });
+  };
   renderMap = () => {
     loadScript(
       "https://maps.googleapis.com/maps/api/js?key=AIzaSyCIPiP86vMiTktACPpQDAIgthK1gh5K73U&callback=initMap"
@@ -22,11 +40,10 @@ class MapDetail extends Component {
   initMap = props => {
     console.log(props);
     var map = new window.google.maps.Map(document.getElementById("map"), {
-      center: { lat: 7.6881285, lng: 36.8205326 },
-      zoom: 8
+      center: { lat: this.state.latitude, lng: this.state.longitude },
+      zoom: 15
     });
     var infowindow = new window.google.maps.InfoWindow();
-
     this.state.items.item.result.map(loc => {
       var contentString =
         '<div id="content">' +
@@ -98,10 +115,28 @@ class MapDetail extends Component {
   };
 
   render() {
+    console.log(this.state);
     return (
-      <main>
-        <div id="map">{console.log("This is map detail")}</div>;
-      </main>
+      <React.Fragment>
+        <div className="py-5">
+          <div className="container">
+            {this.state.items.type === "house" ? (
+              <>
+                {" "}
+                <Tab />
+                <Title name="House" title="Map" />
+              </>
+            ) : (
+              <>
+                {" "}
+                <MachineTab />
+                <Title name="Machinery" title="Map" />
+              </>
+            )}
+            <div id="map"></div>
+          </div>
+        </div>
+      </React.Fragment>
     );
   }
 }

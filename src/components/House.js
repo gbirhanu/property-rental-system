@@ -28,6 +28,7 @@ export default class House extends Component {
                     onClick={() => value.handleDetail(houseId)}
                   >
                     <FontAwesomeIcon icon={faInfoCircle} />
+                    <strong>Details</strong>{" "}
                   </button>
                 </Link>
               </div>

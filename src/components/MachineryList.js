@@ -3,12 +3,14 @@ import Machine from "./Machine";
 import Title from "./Title";
 import { ResourceConsumer } from "../Resource";
 import Default from "./ConnecctionError";
+import MachineTab from "./MachineTab";
 export default class MachineryList extends Component {
   render() {
     return (
       <React.Fragment>
         <div className="py-5">
           <div className="container">
+            <MachineTab />
             <Title name="Machinery" title="List" />
             <div className="row">
               <ResourceConsumer>

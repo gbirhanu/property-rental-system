@@ -1,27 +1,29 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faAddressBook,
   faHome,
   faTruckMonster,
   faPlusCircle
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { ButtonContainer } from "./Button";
 class NavBar extends Component {
-  state = {};
   render() {
+    console.log(this.props.userInfo);
     return (
       <NavWrapper className="navbar  navbar-expand-sm navbar-dark px-sm-5">
-        {/* 
-https://www.iconfinder.com/icons/1243689/call_phone_icon
-Creative Commons (Attribution 3.0 Unported);
-https://www.iconfinder.com/Makoto_msk */}
-        <Link className="nav-link" to="/ethiorental/">
+        <Link
+          className="nav-link"
+          to={{
+            pathname: "/ethiorental/registeration",
+            state: {
+              userInfo: this.props.userInfo
+            }
+          }}
+        >
           <span className="mr-2">
             <FontAwesomeIcon color="var(--mainYellow)" icon={faPlusCircle} />
-          </span>{" "}
+          </span>
           Add Property
         </Link>
         <Link className="nav-link" to="/ethiorental/">
@@ -44,14 +46,6 @@ https://www.iconfinder.com/Makoto_msk */}
             </Link>
           </li>
         </ul>
-        <Link to="/cart" className="ml-auto">
-          <ButtonContainer>
-            <span className="mr-2">
-              <FontAwesomeIcon icon={faAddressBook} />
-            </span>
-            owner
-          </ButtonContainer>
-        </Link>
       </NavWrapper>
     );
   }

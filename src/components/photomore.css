@@ -1,0 +1,68 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+.display-more-photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  margin: 3rem;
+  max-width: 80%;
+}
+
+.main-holder-detail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  margin-left: 5rem;
+  border: 1px solid gray;
+  margin-right: 5rem;
+  max-width: 80%;
+  margin-bottom: 5rem;
+  padding: 3rem 3rem;
+}
+.photo-title-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: center;
+  height: 100vh;
+  max-height: 70%;
+}
+.house-type-container {
+  width: 20vw;
+}
+.my-photo-house {
+  width: 15vw;
+  height: 25vh;
+  cursor: pointer;
+  max-width: 50vw;
+  max-height: 50vh;
+}
+.info-holder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 2rem;
+}
+.my-photo-house:hover,
+:focus {
+  border: 1px solid goldenrod;
+}
+.close-modal-button {
+  position: absolute;
+  top: 15px;
+  right: 5px;
+  font-size: 5rem;
+  cursor: pointer;
+}

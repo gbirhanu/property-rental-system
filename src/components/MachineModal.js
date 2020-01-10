@@ -3,20 +3,20 @@ import styled from "styled-components";
 import { ResourceConsumer } from "../Resource";
 import { ButtonContainer } from "./Button";
 import { Link } from "react-router-dom";
-export default class Modal extends Component {
+export default class MachineModal extends Component {
   render() {
     return (
       <ResourceConsumer>
         {value => {
-          const { modalOpen, closeModal } = value;
+          const { mmodalOpen, closeMModal } = value;
           const {
             housePhoto,
             userName,
             userPhone,
             housePrice,
-            serviceType
-          } = value.modalHouse;
-          if (!modalOpen) {
+            driverStatus
+          } = value.modalMachine;
+          if (!mmodalOpen) {
             return null;
           } else {
             return (
@@ -27,7 +27,7 @@ export default class Modal extends Component {
                       id="modal"
                       className="col-8 mx-auto col-md-6 col-lg-4 text-center text-capitalize p-5"
                     >
-                      <h5>Item added to cart</h5>
+                      <h5>owner Information</h5>
                       <img
                         src={housePhoto}
                         className="img-fluid"
@@ -35,7 +35,7 @@ export default class Modal extends Component {
                         width="200"
                         height="200"
                       />
-                      <h5>House For: {serviceType}</h5>
+                      <h5>Machnine With Driver: {driverStatus}</h5>
                       <h5 className="">price : ${housePrice}</h5>
                       <h5 className="text-title text-upper text-muted mt-3 mb-2">
                         Owned By:
@@ -43,8 +43,8 @@ export default class Modal extends Component {
                       </h5>
                       <h5 className="">Phone : {userPhone}</h5>
 
-                      <Link to="/ethiorental">
-                        <ButtonContainer onClick={() => closeModal()}>
+                      <Link to="/ethiorental/machinery">
+                        <ButtonContainer onClick={() => closeMModal()}>
                           Back To List
                         </ButtonContainer>
                       </Link>
@@ -52,7 +52,7 @@ export default class Modal extends Component {
                       <ButtonContainer
                         cart
                         className="mt-3 ml-3"
-                        onClick={() => closeModal()}
+                        onClick={() => closeMModal()}
                       >
                         Close
                       </ButtonContainer>

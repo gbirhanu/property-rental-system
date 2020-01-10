@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
+import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { ResourceConsumer } from "../Resource";
 export default class House extends Component {
   render() {
-    const { housePhoto, builtYear, housePrice } = this.props.house;
+    const { houseId, housePhoto, builtYear, housePrice } = this.props.house;
     return (
       <ProductWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
         <div className="card">
@@ -22,9 +22,15 @@ export default class House extends Component {
                     height="200"
                   />
                 </Link>
-                <button className="cart-btn">
-                  <FontAwesomeIcon icon={faCartPlus} />
-                </button>
+                <Link to="/ethiorental/mdetail">
+                  <button
+                    className="cart-btn"
+                    onClick={() => value.handleMachineDetail(houseId)}
+                  >
+                    <FontAwesomeIcon icon={faInfoCircle} />
+                    <strong>Details</strong>{" "}
+                  </button>
+                </Link>
               </div>
             )}
           </ResourceConsumer>

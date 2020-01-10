@@ -8,19 +8,42 @@ import MachineryList from "./components/MachineryList";
 import Details from "./components/Details";
 import Modal from "./components/Modal";
 import HouseMap from "./components/HouseMapList";
-import Tab from "./components/Tab";
-function App() {
+import PropertyRegistration from "./components/PropertyResgistration";
+import InsertMorePhoto from "./components/Property/InsertMorePhoto";
+import DisplayMorePhoto from "./components/DisplayMorePhoto";
+import MachineDetails from "./components/MachineDetails";
+import DisplayMoreMachinePhoto from "./components/DisplayMoreMachinePhoto";
+import MachineModal from "./components/MachineModal";
+import MachineMapList from "./components/MachineMapList";
+import AddMoreMachineryPhoto from "./components/Property/AddMoreMachineryPhoto";
+function App(props) {
+  console.log(props.userinfo);
   return (
     <React.Fragment>
-      <NavBar />
-      <Tab />
+      <NavBar userInfo={props.userinfo} />
       <Switch>
         <Route path="/ethiorental" exact component={HouseList} />
         <Route path="/ethiorental/machinery" component={MachineryList} />
         <Route path="/ethiorental/detail" component={Details} />
+        <Route path="/ethiorental/mdetail" component={MachineDetails} />
         <Route path="/ethiorental/map" component={HouseMap} />
+        <Route path="/ethiorental/machinemap" component={MachineMapList} />
+        <Route
+          path="/ethiorental/registeration"
+          component={props => (
+            <PropertyRegistration {...props} userInfo={props.userinfo} />
+          )}
+        />
+        <Route path="/ethiorental/morephoto" component={InsertMorePhoto} />
+        <Route
+          path="/ethiorental/moremachinephoto"
+          component={AddMoreMachineryPhoto}
+        />
       </Switch>
       <Modal />
+      <MachineModal />
+      <DisplayMorePhoto />
+      <DisplayMoreMachinePhoto />
     </React.Fragment>
   );
 }
