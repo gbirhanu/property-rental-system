@@ -3,50 +3,65 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
   faTruckMonster,
-  faPlusCircle
+  faPlusCircle,
+  faLock,
+  faSignOutAlt
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { ButtonContainer } from "./Button";
+import { ResourceConsumer } from "../Resource";
 class NavBar extends Component {
   render() {
-    console.log(this.props.userInfo);
     return (
-      <NavWrapper className="navbar  navbar-expand-sm navbar-dark px-sm-5">
-        <Link
-          className="nav-link"
-          to={{
-            pathname: "/ethiorental/registeration",
-            state: {
-              userInfo: this.props.userInfo
-            }
-          }}
-        >
-          <span className="mr-2">
-            <FontAwesomeIcon color="var(--mainYellow)" icon={faPlusCircle} />
-          </span>
-          Add Property
-        </Link>
-        <Link className="nav-link" to="/ethiorental/">
-          <span className="mr-2">
-            <FontAwesomeIcon color="var(--mainYellow)" icon={faHome} />
-          </span>{" "}
-          House
-        </Link>
+      <ResourceConsumer>
+        {value => {
+          const { logOut } = value;
 
-        <ul className="navbar-nav align-items-center">
-          <li className="nav-item ml-5">
-            <Link className="nav-link" to="/ethiorental/machinery">
-              <span className="mr-2">
-                <FontAwesomeIcon
-                  color="var(--mainYellow)"
-                  icon={faTruckMonster}
-                />
-              </span>{" "}
-              Machinery
-            </Link>
-          </li>
-        </ul>
-      </NavWrapper>
+          return (
+            <NavWrapper className="navbar  navbar-expand-sm navbar-dark px-sm-5">
+              <Link className="nav-link" to="/ethiorental/registeration">
+                <span className="mr-2">
+                  <FontAwesomeIcon
+                    color="var(--mainYellow)"
+                    icon={faPlusCircle}
+                  />
+                </span>
+                Add Property
+              </Link>
+              <Link className="nav-link" to="/ethiorental/">
+                <span className="mr-2">
+                  <FontAwesomeIcon color="var(--mainYellow)" icon={faHome} />
+                </span>{" "}
+                House
+              </Link>
+
+              <ul className="navbar-nav align-items-center">
+                <li className="nav-item ml-5">
+                  <Link className="nav-link" to="/ethiorental/machinery">
+                    <span className="mr-2">
+                      <FontAwesomeIcon
+                        color="var(--mainYellow)"
+                        icon={faTruckMonster}
+                      />
+                    </span>{" "}
+                    Machinery
+                  </Link>
+                </li>
+              </ul>
+              <ButtonContainer className="ml-auto" onClick={() => logOut()}>
+                <span className="mr-2">
+                  <FontAwesomeIcon
+                    color="var(--mainYellow)"
+                    icon={faSignOutAlt}
+                  />
+                </span>
+                Logout
+              </ButtonContainer>
+            </NavWrapper>
+          );
+        }}
+      </ResourceConsumer>
     );
   }
 }

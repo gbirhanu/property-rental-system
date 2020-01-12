@@ -16,11 +16,14 @@ import DisplayMoreMachinePhoto from "./components/DisplayMoreMachinePhoto";
 import MachineModal from "./components/MachineModal";
 import MachineMapList from "./components/MachineMapList";
 import AddMoreMachineryPhoto from "./components/Property/AddMoreMachineryPhoto";
+import BrowserMap from "./components/BrowseMap";
+import Welcome from "./components/Welcome";
 function App(props) {
   console.log(props.userinfo);
   return (
     <React.Fragment>
-      <NavBar userInfo={props.userinfo} />
+      <NavBar />
+
       <Switch>
         <Route path="/ethiorental" exact component={HouseList} />
         <Route path="/ethiorental/machinery" component={MachineryList} />
@@ -30,9 +33,7 @@ function App(props) {
         <Route path="/ethiorental/machinemap" component={MachineMapList} />
         <Route
           path="/ethiorental/registeration"
-          component={props => (
-            <PropertyRegistration {...props} userInfo={props.userinfo} />
-          )}
+          component={PropertyRegistration}
         />
         <Route path="/ethiorental/morephoto" component={InsertMorePhoto} />
         <Route

@@ -4,6 +4,7 @@ import "../../App.css";
 import cogoToast from "cogo-toast";
 import { ButtonContainer } from "../Button";
 import { Link } from "react-router-dom";
+import { ResourceConsumer } from "../../Resource";
 
 export default class InsertMorePhoto extends Component {
   constructor(props) {
@@ -47,40 +48,49 @@ export default class InsertMorePhoto extends Component {
     console.log(this.state);
 
     return (
-      <React.Fragment>
-        <div className="main-area-more-photo">
-          <div className="photo-container">
-            <div className="upload-title">Upload More photo here</div>
-            <div className="image-container">
-              <div className="photo-area">
-                <img
-                  type="file"
-                  src={this.state.file}
-                  alt="House"
-                  className="photo-icon"
-                ></img>
+      <ResourceConsumer>
+        {value => {
+          const { closeAddMorePhoto } = value;
+          return (
+            <div className="main-area-more-photo">
+              <div className="photo-container">
+                <div className="upload-title">Upload More photo here</div>
+                <div className="image-container">
+                  <div className="photo-area">
+                    <img
+                      type="file"
+                      src={this.state.file}
+                      alt="House"
+                      className="photo-icon"
+                    ></img>
+                  </div>
+                  <input
+                    type="file"
+                    className="photo-footer"
+                    onChange={event => {
+                      this.setState({
+                        file: URL.createObjectURL(event.target.files[0])
+                      });
+                    }}
+                  />
+                </div>
               </div>
-              <input
-                type="file"
-                className="photo-footer"
-                onChange={event => {
-                  this.setState({
-                    file: URL.createObjectURL(event.target.files[0])
-                  });
-                }}
-              />
+              <button className="btn-upload" onClick={this.handleUpload}>
+                Upload{" "}
+              </button>
+              <Link to="/ethiorental/registeration">
+                <ButtonContainer
+                  className="ml-3"
+                  cart
+                  onClick={() => closeAddMorePhoto()}
+                >
+                  Back to Registration
+                </ButtonContainer>
+              </Link>
             </div>
-          </div>
-          <button className="btn-upload" onClick={this.handleUpload}>
-            Upload{" "}
-          </button>
-          <Link to="/ethiorental/registeration">
-            <ButtonContainer className="ml-3" cart>
-              Back to Registration
-            </ButtonContainer>
-          </Link>
-        </div>
-      </React.Fragment>
+          );
+        }}
+      </ResourceConsumer>
     );
   }
 }

@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import Title from "./Title";
 import "../App.css";
+import "./map.css";
 import * as Property from "./Property";
 export default class PropertyResgistration extends Component {
   state = {
@@ -13,7 +14,6 @@ export default class PropertyResgistration extends Component {
   };
 
   render() {
-    console.log(this.props.location.state.userInfo);
     return (
       <Fragment>
         <Title name="Property" title="Registration" />
@@ -39,13 +39,9 @@ export default class PropertyResgistration extends Component {
   }
   renderSelectorProperty(selectedType) {
     if (!selectedType) {
-      return (
-        <Property.HouseRegistration
-          userInfo={this.props.location.state.userInfo}
-        />
-      );
+      return <Property.HouseRegistration />;
     }
     const Prop = Property[selectedType];
-    return <Prop userInfo={this.props.location.state.userInfo} />;
+    return <Prop />;
   }
 }
